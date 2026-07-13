@@ -9,6 +9,7 @@ type Props = {
   episode: {
     id: number;
     title: string;
+    subtitle: string;
     questions: {
       id: string;
       text: string;
@@ -64,28 +65,39 @@ export default function EpisodeClient({ episode }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-white p-8">
-      <div className="mx-auto max-w-3xl">
-        <h1 className="mb-2 text-4xl font-bold">
-          🎬 Folge {episode.id}
-        </h1>
+    <main className="min-h-screen bg-white px-6 py-10">
+      <div className="mx-auto max-w-4xl">
 
-        <h2 className="mb-10 text-2xl">
-          {episode.title}
-        </h2>
+        {/* Episodenkopf */}
+
+        <div className="mb-12 text-center">
+
+          <p className="text-sm font-bold uppercase tracking-[0.45em] text-red-600">
+            FOLGE {episode.id}
+          </p>
+
+          <h1 className="mt-4 text-5xl font-extrabold text-gray-900">
+            {episode.title}
+          </h1>
+
+          <p className="mt-4 text-xl italic text-gray-500">
+            {episode.subtitle}
+          </p>
+
+        </div>
 
         {episode.questions.map((question, index) => (
           <div
             key={question.id}
-            className="mb-10 rounded-xl border border-gray-200 p-6 shadow-sm"
+            className="mb-10 rounded-2xl border border-gray-200 bg-white p-8 shadow-md"
           >
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-red-600">
               {index === 0 ? "Wissensfrage" : "Entscheidungsfrage"}
             </p>
 
-            <h3 className="mb-6 text-2xl font-semibold">
+            <h2 className="mb-8 text-3xl font-bold text-gray-900">
               {question.text}
-            </h3>
+            </h2>
 
             <AnswerGroup
               questionId={question.id}
@@ -98,11 +110,12 @@ export default function EpisodeClient({ episode }: Props) {
         <div className="mt-12 flex justify-center">
           <button
             onClick={submit}
-            className="rounded-xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white transition hover:bg-blue-700"
+            className="rounded-xl bg-red-600 px-10 py-4 text-lg font-bold text-white transition hover:bg-red-700"
           >
             Antworten absenden
           </button>
         </div>
+
       </div>
     </main>
   );

@@ -1,7 +1,8 @@
 export const episodes = [
   {
     id: 1,
-    title: "Der Anfang von allem",
+    title: "Liebe auf den ersten Blick?",
+    subtitle: "Verliebt, verplant oder vorbestimmt?",
     questions: [
       {
         id: "f1q1",
@@ -25,9 +26,11 @@ export const episodes = [
       }
     ]
   },
+
   {
     id: 2,
-    title: "Aus Kennenlernen wird Liebe",
+    title: "Aus Fremden wurde Wir.",
+    subtitle: "Vom ersten Date bis zum gemeinsamen Alltag.",
     questions: [
       {
         id: "f2q1",
@@ -51,9 +54,11 @@ export const episodes = [
       }
     ]
   },
+
   {
     id: 3,
-    title: "Der perfekte Moment",
+    title: "Die große Frage",
+    subtitle: "Der Antrag – romantisch, überraschend oder längst überfällig?",
     questions: [
       {
         id: "f3q1",
@@ -77,9 +82,11 @@ export const episodes = [
       }
     ]
   },
+
   {
     id: 4,
-    title: "Die große Entscheidung",
+    title: "Planung, Panik & Perfektion",
+    subtitle: "Zwischen Checklisten, Budget und Nervenkitzel.",
     questions: [
       {
         id: "f4q1",
@@ -103,9 +110,11 @@ export const episodes = [
       }
     ]
   },
+
   {
     id: 5,
-    title: "Gemeinsam unschlagbar",
+    title: "Gemeinsam durchs Leben",
+    subtitle: "Hobbys, kleine Macken und die großen Gemeinsamkeiten.",
     questions: [
       {
         id: "f5q1",
@@ -128,10 +137,12 @@ export const episodes = [
         ]
       }
     ]
-  },
+  },  
+  
   {
     id: 6,
-    title: "Die Hochzeitsformel",
+    title: "Gäste, Grüße & Geschenke",
+    subtitle: "Wer kommt, was bleibt in Erinnerung und was wirklich zählt.",
     questions: [
       {
         id: "f6q1",
@@ -155,9 +166,11 @@ export const episodes = [
       }
     ]
   },
+
   {
     id: 7,
-    title: "Zurück zu den Wurzeln",
+    title: "Reise zurück in die Vergangenheit",
+    subtitle: "Zwei Wege, die schließlich einer wurden.",
     questions: [
       {
         id: "f7q1",
@@ -181,9 +194,11 @@ export const episodes = [
       }
     ]
   },
+
   {
     id: 8,
-    title: "Fast am Ziel",
+    title: "Liebe, Lachen & Tanzen",
+    subtitle: "Die Party, die bleibt – bis in die frühen Morgenstunden.",
     questions: [
       {
         id: "f8q1",
@@ -207,9 +222,11 @@ export const episodes = [
       }
     ]
   },
+
   {
     id: 9,
-    title: "Das große Staffelfinale",
+    title: "Für immer beginnt jetzt.",
+    subtitle: "Was bleibt, wenn die letzte Folge endet?",
     questions: [
       {
         id: "f9q1",
