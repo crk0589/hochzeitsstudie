@@ -81,14 +81,20 @@ export default function AdminDashboard() {
 
         <div className="mt-12 rounded-3xl bg-slate-900 p-10">
 
-          <div className="mb-10 text-center">
-            <p className="text-blue-300">
-              Folge {episode.id}
+          <div className="mb-12 text-center">
+
+            <p className="text-sm font-bold uppercase tracking-[0.45em] text-red-400">
+              FOLGE {episode.id}
             </p>
 
-            <h2 className="mt-3 text-4xl font-bold">
+            <h2 className="mt-4 text-5xl font-extrabold">
               {episode.title}
             </h2>
+
+            <p className="mt-4 text-xl italic text-gray-400">
+              {episode.subtitle}
+            </p>
+
           </div>
 
           <div className="grid gap-10 lg:grid-cols-2">
