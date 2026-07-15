@@ -7,21 +7,29 @@ import ResultsChart from "@/components/ResultsChart";
 import PresentationEnd from "@/components/PresentationEnd";
 
 export default function AdminDashboard() {
-  const [episodeIndex, setEpisodeIndex] = useState(0);
-  const [stats, setStats] = useState<any>(null);
-  const [reveal, setReveal] = useState(false);
-  const [finished, setFinished] = useState(false);
+const [episodeIndex, setEpisodeIndex] = useState(0);
+const [stats, setStats] = useState<any>(null);
+
+const [showPreview, setShowPreview] = useState(true);
+
+const [reveal, setReveal] = useState(false);
+
+const [finished, setFinished] = useState(false);
 
   const episode = episodes[episodeIndex];
-
+console.log("showPreview:", showPreview);
   useEffect(() => {
     if (finished) return;
 
     async function load() {
-      const result = await getEpisodeResults(episode.id);
-      setStats(result);
-      setReveal(false);
-    }
+  const result = await getEpisodeResults(episode.id);
+
+  setStats(result);
+
+  setReveal(false);
+
+  setShowPreview(true);
+}
 
     load();
   }, [episode.id, finished]);
@@ -58,7 +66,7 @@ export default function AdminDashboard() {
         </p>
 
         <p className="mt-2 text-center text-gray-400">
-          Abteilung Hochzeitsforschung
+          in Kooperation mit Netflix
         </p>
 
         <h1 className="mt-8 text-center text-5xl font-extrabold">
@@ -80,7 +88,27 @@ export default function AdminDashboard() {
         </div>
 
         <div className="mt-12 rounded-3xl bg-slate-900 p-10">
+          {showPreview ? (
 
+        <div className="flex flex-col items-center justify-center">
+
+          <img
+            src={`/episodes/folge${episode.id}.png`}
+            alt={`Folge ${episode.id}`}
+            className="mx-auto max-h-[82vh] w-auto rounded-3xl shadow-2xl"
+          />
+
+    <button
+      onClick={() => setShowPreview(false)}
+      className="mt-10 rounded-xl bg-red-600 px-12 py-5 text-2xl font-bold hover:bg-red-700 transition"
+    >
+      ▶ Zur Auswertung
+    </button>
+
+  </div>
+
+) : (
+<>
           <div className="mb-12 text-center">
 
             <p className="text-sm font-bold uppercase tracking-[0.45em] text-red-400">
@@ -119,28 +147,34 @@ export default function AdminDashboard() {
 
             <button
               disabled={episodeIndex === 0}
-              onClick={() => setEpisodeIndex((i) => i - 1)}
+              onClick={() => {
+              setEpisodeIndex((i) => i - 1);
+              setReveal(false);
+              setShowPreview(true);
+              }}
               className="rounded-xl bg-slate-700 px-6 py-4 disabled:opacity-40"
-            >
+             >
               ◀ Vorherige Folge
             </button>
 
             {!reveal ? (
               <button
-                onClick={() => setReveal(true)}
-                className="rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold hover:bg-green-700"
+              onClick={() => setReveal(true)}
+              className="rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold hover:bg-green-700"
               >
-                Auflösung anzeigen
+              🎬 Ergebnisse anzeigen
               </button>
             ) : (
               <button
-                onClick={() => {
-                  if (episodeIndex === episodes.length - 1) {
-                    setFinished(true);
-                  } else {
-                    setEpisodeIndex((i) => i + 1);
-                  }
-                }}
+onClick={() => {
+  if (episodeIndex === episodes.length - 1) {
+    setFinished(true);
+  } else {
+    setEpisodeIndex((i) => i + 1);
+    setReveal(false);
+    setShowPreview(true);
+  }
+}}
                 className="rounded-xl bg-blue-600 px-8 py-4 text-lg font-semibold hover:bg-blue-700"
               >
                 {episodeIndex === episodes.length - 1
@@ -150,10 +184,15 @@ export default function AdminDashboard() {
             )}
 
           </div>
+          </>
+
+          )}
 
         </div>
 
       </div>
+
     </main>
+
   );
 }
